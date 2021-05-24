@@ -11,6 +11,12 @@ import './App.css';
 function App() {
     const [messageValue, setMessageValue] = React.useState('');
     const [termsAndConditionsValue, toggleTermsAndConditionsValue] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+
+    function sendForm() {
+        console.log(`Het bericht: "${messageValue}" is succesvol verzonden.`);
+        setSubmitted(true);
+    }
 
   return (
       <>
@@ -83,8 +89,12 @@ function App() {
                 </label>
             </form>
 
-            <button type = "submit">
-            Verstuur
+            <button
+                type = "submit"
+                disabled={!termsAndConditionsValue}
+                onClick={sendForm}
+                >
+                Verstuur
             </button>
         </div>
 
